@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+app:cardCornerRadius="5dp"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:theme="@style/Theme.MaterialComponents"
+app:cardBackgroundColor="#fff"
+    android:background="@color/white"
+app:cardElevation="3dp">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="20dp">
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Daily Report"
+        android:textAppearance="?attr/textAppearanceHeadline6"
+        android:textColor="#134059"
+        android:textSize="20sp" />
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="serif"
+        android:background="#134059"/>
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:fontFamily="sans-serif"
+        android:text="You temperature*"
+        android:textColor="#1a7CB4"
+        android:textSize="16sp" />
+    <com.google.android.material.textfield.TextInputEditText
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textColor="#99000000"
+        android:text="Enter your temperature here">
+    </com.google.android.material.textfield.TextInputEditText>
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:fontFamily="sans-serif"
+        android:text="Do you have any below symptoms?"
+        android:textColor="#1a7CB4"
+        android:textSize="16sp" />
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:fontFamily="sans-serif"
+        android:text="• Fever or chills
+\n• Cough
+\n• Shortness of breath or difficulty breathing
+\n• Fatigue
+\n• Muscle or body aches
+\n• Headache
+\n• New loss of taste or smell
+\n• Sore throat
+\n• Congestion or runny nose
+\n• Nausea or vomiting
+\n• Diarrhea"
+        android:textColor="#1a7CB4"
+        android:textSize="16sp" />
+    <RadioGroup
+        android:id="@+id/q1_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/q1_checkBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:buttonTint="#1a7CB4"
+            android:fontFamily="sans-serif"
+            android:scaleX="0.7"
+            android:scaleY="0.7"
+            android:text="Yes"
+            android:textColor="#1a7CB4"
+            android:textSize="18sp"
+            android:visibility="visible" />
+
+        <RadioButton
+            android:id="@+id/q1_checkBox2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:buttonTint="#1a7CB4"
+            android:fontFamily="sans-serif"
+            android:scaleX="0.7"
+            android:scaleY="0.7"
+            android:text="No"
+            android:textColor="#1a7CB4"
+            android:textSize="18sp"
+            android:visibility="visible" />
+
+    </RadioGroup>
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="#2F80ed"
+        style="?attr/borderlessButtonStyle"
+        android:layout_margin="10dp"
+        android:layout_gravity="right|center_vertical"
+        android:text="REPORT NOW">
+    </com.google.android.material.button.MaterialButton>
+</LinearLayout>
+</LinearLayout>

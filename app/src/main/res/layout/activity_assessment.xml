@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:id="@+id/sv"
+    tools:context=".Assessment">
+<!--https://bc.thrive.health/covid19/en-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="30dp"
+            android:src="@drawable/ic_round_arrow_back_ios_24"></ImageView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:orientation="vertical">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:theme="@style/Theme.MaterialComponents"
+                app:cardBackgroundColor="#fff"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="3dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
+
+                    <!-- Media -->
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="Self Assessment"
+                        android:textAppearance="?attr/textAppearanceHeadline6"
+                        android:textColor="#134059"
+                        android:textSize="18sp" />
+
+                    <ImageView
+                        android:layout_width="fill_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="serif"
+                        android:background="#134059"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:fontFamily="serif"
+                        android:text="Question1"
+                        android:textAppearance="?attr/textAppearanceBody2"
+                        android:textColor="#1a7CB4"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="Are you experiencing any of the following:"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="#1a7CB4"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="5dp"
+                        android:text="•  Severe difficulty breathing (e.g. struggling to breathe or speaking in single words)
+              \n•  Severe chest painHaving a very hard time waking up
+              \n•  Feeling confused
+              \n•  Losing consciousness"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="#1a7CB4"
+                        android:textSize="14sp" />
+
+                    <RadioGroup
+                        android:id="@+id/q1_group"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/q1_checkBox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:buttonTint="#1a7CB4"
+                            android:fontFamily="sans-serif"
+                            android:scaleX="0.7"
+                            android:scaleY="0.7"
+                            android:text="Yes"
+                            android:textColor="#1a7CB4"
+                            android:textSize="18sp"
+                            android:visibility="visible" />
+
+                        <RadioButton
+                            android:id="@+id/q1_checkBox2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:buttonTint="#1a7CB4"
+                            android:fontFamily="sans-serif"
+                            android:scaleX="0.7"
+                            android:scaleY="0.7"
+                            android:text="No"
+                            android:textColor="#1a7CB4"
+                            android:textSize="18sp"
+                            android:visibility="visible" />
+
+                    </RadioGroup>
+
+                    <LinearLayout
+                        android:id="@+id/q2_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:layout_width="fill_parent"
+                            android:layout_height="2dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:fontFamily="serif"
+                            android:background="#134059"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:fontFamily="serif"
+                            android:text="Question2"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                            android:textColor="#1a7CB4"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="10dp"
+                            android:text="Are you experiencing any of the following:"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textColor="#1a7CB4"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="5dp"
+                            android:text="•  Mild to moderate shortness of breath
+               \n•  Inability to lie down because of difficulty breathing
+               \n•  Chronic health conditions that you are having difficulty managing because of difficulty breathing"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textColor="#1a7CB4"
+                            android:textSize="14sp" />
+
+                        <RadioGroup
+                            android:id="@+id/q2_group"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/q2_checkBox"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:buttonTint="#1a7CB4"
+                                android:fontFamily="sans-serif"
+                                android:scaleX="0.7"
+                                android:scaleY="0.7"
+                                android:text="Yes"
+                                android:textColor="#1a7CB4"
+                                android:textSize="18sp"
+                                android:visibility="visible" />
+
+                            <RadioButton
+                                android:id="@+id/q2_checkBox2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:buttonTint="#1a7CB4"
+                                android:fontFamily="sans-serif"
+                                android:scaleX="0.7"
+                                android:scaleY="0.7"
+                                android:text="No"
+                                android:textColor="#1a7CB4"
+                                android:textSize="18sp"
+                                android:visibility="visible" />
+                        </RadioGroup>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/q3_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:layout_width="fill_parent"
+                            android:layout_height="2dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:fontFamily="serif"
+                            android:background="#134059"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:fontFamily="serif"
+                            android:text="Question 3"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                            android:textColor="#1a7CB4"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="10dp"
+                            android:text="Are you experiencing cold, flu or COVID-19-like symptoms, even mild ones?"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textColor="#1a7CB4"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:text="Symptoms include: Fever*, chills, cough or worsening of chronic cough, shortness of breath, sore throat, runny nose, loss of sense of smell or taste, headache, fatigue, diarrhea, loss of appetite, nausea and vomiting, muscle aches.
+\n
+\nWhile less common, symptoms can also include: stuffy nose, conjunctivitis (pink eye), dizziness, confusion, abdominal pain, skin rashes or discoloration of fingers or toes.
+\n
+\nFever: Average normal body temperature taken orally is about 37°C."
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textColor="#1a7CB4"
+                            android:textSize="14sp" />
+
+                        <RadioGroup
+                            android:id="@+id/q3_group"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/q3_checkBox"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:buttonTint="#1a7CB4"
+                                android:fontFamily="sans-serif"
+                                android:scaleX="0.7"
+                                android:scaleY="0.7"
+                                android:text="Yes"
+                                android:textColor="#1a7CB4"
+                                android:textSize="18sp"
+                                android:visibility="visible" />
+
+                            <RadioButton
+                                android:id="@+id/q3_checkBox2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:buttonTint="#1a7CB4"
+                                android:fontFamily="sans-serif"
+                                android:scaleX="0.7"
+                                android:scaleY="0.7"
+                                android:text="No"
+                                android:textColor="#1a7CB4"
+                                android:textSize="18sp"
+                                android:visibility="visible" />
+                        </RadioGroup>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/q4_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:layout_width="fill_parent"
+                            android:layout_height="2dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:fontFamily="serif"
+                            android:background="#134059"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:fontFamily="serif"
+                            android:text="Question 4"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                            android:textColor="#1a7CB4"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="10dp"
+                            android:text="Have you travelled abroad within the last 14 days?"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textColor="#1a7CB4"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <RadioGroup
+                            android:id="@+id/q4_group"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/q4_checkBox"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:buttonTint="#1a7CB4"
+                                android:fontFamily="sans-serif"
+                                android:scaleX="0.7"
+                                android:scaleY="0.7"
+                                android:text="Yes"
+                                android:textColor="#1a7CB4"
+                                android:textSize="18sp"
+                                android:visibility="visible" />
+
+                            <RadioButton
+                                android:id="@+id/q4_checkBox2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:buttonTint="#1a7CB4"
+                                android:fontFamily="sans-serif"
+                                android:scaleX="0.7"
+                                android:scaleY="0.7"
+                                android:text="No"
+                                android:textColor="#1a7CB4"
+                                android:textSize="18sp"
+                                android:visibility="visible" />
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/q5_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:layout_width="fill_parent"
+                            android:layout_height="2dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:fontFamily="serif"
+                            android:background="#134059"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:fontFamily="serif"
+                            android:text="Question 5"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                            android:textColor="#1a7CB4"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="10dp"
+                            android:text="Did you provide care or have close contact with a person with confirmed COVID-19?"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textColor="#1a7CB4"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <RadioGroup
+                            android:id="@+id/q5_group"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/q5_checkBox"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:buttonTint="#1a7CB4"
+                                android:fontFamily="sans-serif"
+                                android:scaleX="0.7"
+                                android:scaleY="0.7"
+                                android:text="Yes"
+                                android:textColor="#1a7CB4"
+                                android:textSize="18sp"
+                                android:visibility="visible" />
+
+                            <RadioButton
+                                android:id="@+id/q5_checkBox2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:buttonTint="#1a7CB4"
+                                android:fontFamily="sans-serif"
+                                android:scaleX="0.7"
+                                android:scaleY="0.7"
+                                android:text="No"
+                                android:textColor="#1a7CB4"
+                                android:textSize="18sp"
+                                android:visibility="visible" />
+                        </RadioGroup>
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/button"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="20dp"
+                        android:backgroundTint="#1a7CB4"
+                        android:text="Submit"
+                        android:textColor="#FFFFFF" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/assessment_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:theme="@style/Theme.MaterialComponents"
+                android:visibility="gone"
+                app:cardBackgroundColor="#fff"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="Result"
+                        android:textAppearance="?attr/textAppearanceHeadline6"
+                        android:textColor="#1a7CB4"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:id="@+id/assessment_result_Y"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/y_result"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="20dp"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="You may get a COVID-19.Please visit the nearest hospital."
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textColor="#E91E63"
+                            android:textSize="18sp" />
+
+                        <LinearLayout
+                            android:id="@+id/ll_map_container"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:orientation="vertical">
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/assessment_result_N"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/n_result"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="20dp"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="You are safe now."
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textColor="#009688"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+    </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>

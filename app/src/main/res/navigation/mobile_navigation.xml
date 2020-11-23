@@ -14,12 +14,17 @@
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="com.example.covid19.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:label="@string/title_news"
+        tools:layout="@layout/fragment_news" />
 
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.example.covid19.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:label="@string/title_info"
+        tools:layout="@layout/fragment_info" />
+    <fragment
+        android:id="@+id/navigation_me"
+        android:name="com.example.covid19.ui.notifications.NotificationsFragment"
+        android:label="@string/title_info"
+        tools:layout="@layout/fragment_me" />
 </navigation>
