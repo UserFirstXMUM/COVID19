@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/top2"
+                android:layout_width="297dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="236dp"
+                android:layout_marginEnd="81dp"
+                android:layout_marginBottom="45dp"
+                android:fontFamily="sans-serif"
+                android:text="Stop-Covid19"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="42sp"
+                app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/et_username"
+                android:layout_width="306dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="85dp"
+                android:layout_marginLeft="85dp"
+                android:layout_marginEnd="86dp"
+                android:layout_marginRight="86dp"
+                android:background="@drawable/edit_bg"
+                android:ems="10"
+                android:hint="   Username"
+                android:inputType="textPersonName"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/head"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <EditText
+                android:id="@+id/et_password1"
+                android:layout_width="306dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="85dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="86dp"
+                android:background="@drawable/edit_bg"
+                android:ems="10"
+                android:hint="   Password"
+                android:inputType="textPassword"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/registerbtn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_username" />
+
+            <EditText
+                android:id="@+id/et_password2"
+                android:layout_width="306dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="85dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="86dp"
+                android:layout_marginRight="66dp"
+                android:background="@drawable/edit_bg"
+                android:ems="10"
+                android:hint="   Verify Password Again"
+                android:inputType="textPassword"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/registerbtn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_username" />
+
+            <EditText
+                android:id="@+id/et_gender"
+                android:layout_width="306dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="85dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="86dp"
+                android:layout_marginRight="200dp"
+                android:background="@drawable/edit_bg"
+                android:ems="10"
+                android:hint="   Gender"
+                android:inputType="textPersonName"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.462"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_password1" />
+
+            <EditText
+                android:id="@+id/et_age"
+                android:layout_width="306dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="85dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="86dp"
+                android:layout_marginRight="200dp"
+                android:background="@drawable/edit_bg"
+                android:ems="10"
+                android:hint="   Age"
+                android:inputType="textPersonName"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_password1" />
+
+            <EditText
+                android:id="@+id/et_phone"
+                android:layout_width="306dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="85dp"
+                android:layout_marginLeft="129dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="86dp"
+                android:layout_marginRight="141dp"
+                android:background="@drawable/edit_bg"
+                android:ems="10"
+                android:hint="   Phone Number"
+                android:inputType="textPersonName"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_gender" />
+
+            <EditText
+                android:id="@+id/et_email"
+                android:layout_width="306dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="85dp"
+                android:layout_marginLeft="129dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="86dp"
+                android:layout_marginRight="141dp"
+                android:background="@drawable/edit_bg"
+                android:ems="10"
+                android:hint="   Email"
+                android:inputType="textPersonName"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_gender" />
+
+            <EditText
+                android:id="@+id/et_birth"
+                android:layout_width="306dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="85dp"
+                android:layout_marginLeft="129dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="86dp"
+                android:layout_marginRight="141dp"
+                android:background="@drawable/edit_bg"
+                android:ems="10"
+                android:hint="   Birthday"
+                android:inputType="textPersonName"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_gender" />
+
+            <Spinner
+                android:id="@+id/sp_married"
+                android:layout_width="307dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="85dp"
+                android:layout_marginLeft="85dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="86dp"
+                android:layout_marginRight="85dp"
+                android:layout_marginBottom="8dp"
+                android:spinnerMode="dialog"
+                app:layout_constraintBottom_toTopOf="@+id/register_btn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_password2"
+                app:layout_constraintVertical_bias="0.111" />
+
+            <TextView
+                android:id="@+id/register_btn"
+                android:layout_width="94dp"
+                android:layout_height="33dp"
+                android:layout_marginStart="158dp"
+                android:layout_marginTop="55dp"
+                android:layout_marginEnd="159dp"
+                android:layout_marginBottom="159dp"
+                android:background="@drawable/button_bg"
+                android:text="Register"
+                android:textAlignment="center"
+                android:textColor="#5666BD"
+                android:textSize="21sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>
