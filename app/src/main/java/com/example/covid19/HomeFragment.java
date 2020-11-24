@@ -21,16 +21,17 @@ import com.google.android.material.card.MaterialCardView;
 
 public class HomeFragment extends Fragment {
 
-    private HomeViewModel homeViewModel;
     MaterialCardView Assessment_button;
+    MaterialCardView info_button;
+    MaterialCardView news_button;
+    MaterialCardView code_button;
     com.google.android.material.button.MaterialButton report_but;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
         BottomSheetDialog bottomSheet = new BottomSheetDialog(getContext());
         View root = inflater.inflate(R.layout.fragment_home, container, false);
+
         Assessment_button=root.findViewById(R.id.assessment_button);
         Assessment_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +46,32 @@ public class HomeFragment extends Fragment {
             public void onClick(View view) {
                 bottomSheet.setContentView(R.layout.bottom_sheet);
                 bottomSheet.show();
+            }
+        });
+        info_button=root.findViewById(R.id.info_but);
+        info_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().getSupportFragmentManager().
+                        beginTransaction().replace(R.id.nav_host_fragment,new InfoFragment(),null).
+                        addToBackStack(null).commit();
+            }
+        });
+        news_button=root.findViewById(R.id.news_but);
+        news_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().getSupportFragmentManager().
+                        beginTransaction().replace(R.id.nav_host_fragment,new NewsFragment(),null).
+                        addToBackStack(null).commit();
+            }
+        });
+        code_button=root.findViewById(R.id.code_but);
+        code_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), QRPage.class);
+                startActivity(intent);
             }
         });
         return root;
