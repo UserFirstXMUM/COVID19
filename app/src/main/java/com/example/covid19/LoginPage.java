@@ -16,8 +16,8 @@ import android.widget.TextView;
 public class LoginPage<UserDBHelper> extends AppCompatActivity {
     private EditText UserName;
     private EditText Password;
-    private EditText Login;
-    private EditText Register;
+    private com.google.android.material.textview.MaterialTextView Login;
+    private com.google.android.material.textview.MaterialTextView Register;
     private TextView Info;
     private int Counter;
     private UserDBHelper mHelper;

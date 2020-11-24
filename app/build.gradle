@@ -27,7 +27,9 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 }
-
+configurations {
+    compile.exclude group: "junit", module: "junit"
+}
 dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.2.0'

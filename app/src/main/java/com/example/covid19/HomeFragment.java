@@ -1,4 +1,4 @@
-package com.example.covid19.ui.home;
+package com.example.covid19;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.covid19.Assessment;
 import com.example.covid19.R;
+import com.example.covid19.ui.home.HomeViewModel;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.card.MaterialCardView;
 

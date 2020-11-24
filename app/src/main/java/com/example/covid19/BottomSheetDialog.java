@@ -1,3 +1,5 @@
+package com.example.covid19;
+
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
