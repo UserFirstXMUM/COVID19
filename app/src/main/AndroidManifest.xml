@@ -13,7 +13,7 @@
         <activity android:name=".Assessment"></activity>
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name"/>
         <activity android:name=".QRPage"></activity>
         <activity android:name=".InfoPage">
             <intent-filter>
@@ -25,11 +25,6 @@
         <activity android:name=".EditPage" />
         <activity android:name=".RegisterPage" />
         <activity android:name=".LoginPage" />
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name">
-
-        </activity>
     </application>
 
 </manifest>
