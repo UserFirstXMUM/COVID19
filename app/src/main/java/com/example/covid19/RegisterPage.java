@@ -1,6 +1,5 @@
 package com.example.covid19;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,8 +10,13 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
+
+import com.example.covid19.bean.UserInfo;
+import com.example.covid19.database.UserDBHelper;
+import com.example.covid19.util.DateUtil;
 
 public class RegisterPage extends AppCompatActivity implements OnClickListener {
     private EditText et_name;
@@ -23,10 +27,9 @@ public class RegisterPage extends AppCompatActivity implements OnClickListener {
     private EditText et_password2;
     private EditText et_gender;
     private EditText et_birth;
-    private EditText registerbtn;
     private boolean manager = false;
+    private UserDBHelper mHelper;
 
-    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +42,7 @@ public class RegisterPage extends AppCompatActivity implements OnClickListener {
         et_password2 = findViewById(R.id.et_password2);
         et_gender = findViewById(R.id.et_gender);
         et_birth = findViewById(R.id.et_birth);
-        registerbtn = findViewById(R.id.register_btn);
+        TextView register_btn = findViewById(R.id.register_btn);
         findViewById(R.id.register_btn).setOnClickListener(this);
         initTypeSpinner();
     }
@@ -65,6 +68,23 @@ public class RegisterPage extends AppCompatActivity implements OnClickListener {
         public void onNothingSelected(AdapterView<?> arg0) {
         }
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        // Get an instance of the database Helper
+        mHelper = UserDBHelper.getInstance(this, 2);
+        // Open the write connection to the database helper
+        mHelper.openWriteLink();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        // Close database connection
+        mHelper.closeLink();
+    }
+
 
     @Override
     public void onClick(View v) {
@@ -111,6 +131,19 @@ public class RegisterPage extends AppCompatActivity implements OnClickListener {
                 return;
             }
 
+            // The following declares a user information object and fills in its field values
+            UserInfo info = new UserInfo();
+            info.username = name;
+            info.age = Integer.parseInt(age);
+            info.email = email;
+            info.phone = phone;
+            info.password = password1;
+            info.manager = manager;
+            info.birthday = birth;
+            info.gender = g;
+            info.register_time = DateUtil.getNowDateTime("yyyy-MM-dd HH:mm:ss");
+            // Perform the insert operation of the database helper
+            mHelper.insert_user(info);
             showToast("Information has been written to the SQLite database");
             Intent intent = new Intent(this, LoginPage.class);
             startActivity(intent);

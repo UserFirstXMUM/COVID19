@@ -308,20 +308,22 @@
                                 android:textSize="18sp" />
 
                             <ImageView
-                                android:id="@+id/imageView6"
+                                android:id="@+id/la1"
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
                                 android:layout_marginTop="3dp"
                                 android:layout_weight="1"
+                                android:visibility="visible"
                                 app:srcCompat="@drawable/ic_arrow_down" />
                         </LinearLayout>
 
                         <TextView
-                            android:id="@+id/textView11"
+                            android:id="@+id/text1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
+                            android:layout_marginBottom="10dp"
                             android:text="No, or yes but I checked the temperature every time."
                             android:textColor="#BBBBBB"
                             android:textSize="18sp"
@@ -337,7 +339,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="20dp"
-                    android:layout_marginBottom="30dp"
+                    android:layout_marginBottom="80dp"
                     android:theme="@style/Theme.MaterialComponents"
                     app:cardBackgroundColor="#fff"
                     app:cardCornerRadius="10dp"
@@ -378,7 +380,7 @@
                                 android:textSize="18sp" />
 
                             <ImageView
-                                android:id="@+id/imageView7"
+                                android:id="@+id/la2"
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
                                 android:layout_marginTop="3dp"
@@ -387,11 +389,12 @@
                         </LinearLayout>
 
                         <TextView
-                            android:id="@+id/textView15"
+                            android:id="@+id/text3"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
+                            android:layout_marginBottom="10dp"
                             android:text="Temperature over 37.2 degrees should be taken seriously."
                             android:textColor="#BBBBBB"
                             android:textSize="18sp"
