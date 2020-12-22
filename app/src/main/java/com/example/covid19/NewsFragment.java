@@ -72,24 +72,13 @@ public class NewsFragment extends Fragment {
         recyclerView.setAdapter(adapter);
 
 
-        initWebView(view);
+
 
         return view;
     }
 
     @SuppressLint("SetJavaScriptEnabled")
-    private void initWebView(View view) {
-        WebView webView = view.findViewById(R.id.webView);
-        WebSettings settings = webView.getSettings();
-        settings.setDomStorageEnabled(true);
-        settings.setUseWideViewPort(true);
-        settings.setSupportZoom(true);
-        settings.setBuiltInZoomControls(true);
-        settings.setLoadWithOverviewMode(true);
-        settings.setAllowUniversalAccessFromFileURLs(true);
-        settings.setJavaScriptEnabled(true);
-        webView.loadUrl("file:///android_asset/map.html");
-    }
+
 
     private void initNewsData() {
         //获得assets资源管理器（assets中的文件无法直接访问，可以使用AssetManager访问）
