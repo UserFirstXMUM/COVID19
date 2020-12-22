@@ -2,6 +2,7 @@ package com.example.covid19;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -24,6 +25,7 @@ import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 
+
 import static android.content.Context.MODE_PRIVATE;
 
 public class MeFragment extends Fragment {
@@ -34,6 +36,7 @@ public class MeFragment extends Fragment {
     RelativeLayout trip_record;
     RelativeLayout qrcode_scanner;
     RelativeLayout personal_information;
+    RelativeLayout log_out;
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -104,6 +107,7 @@ public class MeFragment extends Fragment {
         setOnDailyReportCalendarClicked();
         setOnTripRecordClicked();
         setonQRcodeScannerClicked();
+ //       setOnLogOutClicked();
 
         return view;
     }
@@ -135,4 +139,6 @@ public class MeFragment extends Fragment {
             startActivity(intent);
         });
     }
+
+
 }
