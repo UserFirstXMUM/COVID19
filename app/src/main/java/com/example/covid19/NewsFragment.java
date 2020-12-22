@@ -85,7 +85,6 @@ public class NewsFragment extends Fragment {
         AssetManager assetManager = getContext().getAssets();
         try (InputStreamReader inputStreamReader = new InputStreamReader(assetManager.open("who_news.json"), StandardCharsets.UTF_8);
              BufferedReader br = new BufferedReader(inputStreamReader)) {
-
             Gson gson = new Gson();
             newsList = gson.fromJson(br, new TypeToken<List<News>>() {
             }.getType());

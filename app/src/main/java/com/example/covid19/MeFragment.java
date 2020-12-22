@@ -2,7 +2,6 @@ package com.example.covid19;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -24,7 +23,6 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
-
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -126,17 +124,15 @@ public class MeFragment extends Fragment {
 
     private void setOnTripRecordClicked() {
         trip_record.setOnClickListener(v -> {
-            Intent intent = new Intent(getActivity(), Date.class);
+            Intent intent = new Intent(getActivity(), Travel.class);
             startActivity(intent);
         });
     }
 
     private void setonQRcodeScannerClicked() {
         qrcode_scanner.setOnClickListener(v -> {
-            Intent intent = new Intent(getActivity(), QRPage.class);
+            Intent intent = new Intent(getActivity(), QRcode.class);
             startActivity(intent);
         });
     }
-
-
 }

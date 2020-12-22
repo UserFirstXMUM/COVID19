@@ -1,6 +1,8 @@
 package com.example.covid19.database;
 
 import java.util.ArrayList;
+
+import com.example.covid19.Travel;
 import com.example.covid19.bean.UserInfo;
 
 import android.annotation.SuppressLint;
@@ -19,8 +21,12 @@ public class UserDBHelper extends SQLiteOpenHelper {
     private static UserDBHelper mHelper = null; // 数据库帮助器的实例
     private SQLiteDatabase mDB = null; // 数据库的实例
     public static final String TABLE_NAME = "user_info"; // 表的名称
+    public static final String TABLE_TRAVEL="Travel";
+    public static final String TABLE_T_N="name";
+    public static final String TABLE_T_A="address";
+    public static final String TABLE_T_D="date";
 
-    private UserDBHelper(Context context) {
+    public UserDBHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
 
@@ -77,7 +83,16 @@ public class UserDBHelper extends SQLiteOpenHelper {
                 + ");";
         Log.d(TAG, "create_sql:" + create_sql);
         db.execSQL(create_sql);
-
+        String create_sql2 = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " ("
+                + "_id INTEGER PRIMARY KEY  AUTOINCREMENT NOT NULL,"
+                + "username VARCHAR NOT NULL," + "age INTEGER NOT NULL,"
+                + "email VARCHAR NOT NULL," + "manager INTEGER NOT NULL," + "gender INTEGER NOT NULL," + "birthday VARCHAR," + "register_time VARCHAR NOT NULL"
+                //演示数据库升级时要先把下面这行注释
+                + ",phone VARCHAR NOT NULL" + ",password VARCHAR NOT NULL" + ",head_portrait VARCHAR" + ",portrait INTEGER"
+                + ");";
+        Log.d(TAG, "create_sql:" + create_sql);
+        db.execSQL(create_sql);
+        db.execSQL("create table " + TABLE_TRAVEL + "(ID INTEGER PRIMARY KEY AUTOINCREMENT,NAME VARCHAR,ADDRESS TEXT,DATE TEXT)");
     }
 
 
@@ -95,6 +110,22 @@ public class UserDBHelper extends SQLiteOpenHelper {
         }
     }
 
+    public Cursor getTravelRecord()
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("SELECT * From " + TABLE_TRAVEL, null);
+        return res;
+    }
+    public void addTravel(String name,String address,String date)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("SELECT * From " + TABLE_TRAVEL, null);
+        ContentValues cv= new ContentValues();
+        cv.put(TABLE_T_A,address);
+        cv.put(TABLE_T_N,name);
+        cv.put(TABLE_T_D,date);
+        db.insert(TABLE_TRAVEL,null,cv);
+    }
     // 根据指定条件删除表记录
     public int deleteUser(String condition) {
         // 执行删除记录动作，该语句返回删除记录的数目

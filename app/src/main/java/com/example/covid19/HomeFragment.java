@@ -5,17 +5,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 
-import com.example.covid19.Assessment;
-import com.example.covid19.R;
-import com.example.covid19.ui.home.HomeViewModel;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.card.MaterialCardView;
 
@@ -70,10 +63,11 @@ public class HomeFragment extends Fragment {
         code_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(), QRPage.class);
+                Intent intent = new Intent(getContext(), Travel.class);
                 startActivity(intent);
             }
         });
         return root;
     }
+
 }

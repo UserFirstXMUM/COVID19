@@ -45,7 +45,7 @@ public class EditPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_page);
-        Bundle bundle=getIntent().getExtras();
+        Bundle bundle=this.getIntent().getExtras();
         user_id = bundle.getInt("user_id",0);
         et_name = findViewById(R.id.et_username);
         et_age = findViewById(R.id.et_age);
