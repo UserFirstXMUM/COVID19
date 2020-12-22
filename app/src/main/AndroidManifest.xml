@@ -25,7 +25,7 @@
         </activity>
         <activity android:name=".EditPage" />
         <activity android:name=".RegisterPage" />
-        <activity android:name=".InfoPage" />
+
     </application>
 
 </manifest>
