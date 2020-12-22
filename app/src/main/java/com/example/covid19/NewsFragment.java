@@ -68,11 +68,8 @@ public class NewsFragment extends Fragment {
         initNewsData();
         adapter = new RecycleViewAdapter(newsList, getContext());
         RecyclerView recyclerView = view.findViewById(R.id.news_recycleView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
-
-
-
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         return view;
     }

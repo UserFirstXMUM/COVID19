@@ -23,7 +23,7 @@ import java.util.List;
 import com.example.covid19.R;
 import com.example.covid19.News;
 
-public class RecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class RecycleViewAdapter extends RecyclerView.Adapter {
 
     private List<News> newsList;
     private Context context;
@@ -101,6 +101,9 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             newsTitle.setBackgroundColor(Color.argb(20, 0, 0, 0));
         }
 
+        public void bindView(final int position) {
+
+        }
     }
 }
 

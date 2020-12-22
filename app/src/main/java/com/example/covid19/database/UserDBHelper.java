@@ -112,13 +112,13 @@ public class UserDBHelper extends SQLiteOpenHelper {
 
     public Cursor getTravelRecord()
     {
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.openReadLink();
         Cursor res = db.rawQuery("SELECT * From " + TABLE_TRAVEL, null);
         return res;
     }
     public void addTravel(String name,String address,String date)
     {
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.openWriteLink();
         Cursor res = db.rawQuery("SELECT * From " + TABLE_TRAVEL, null);
         ContentValues cv= new ContentValues();
         cv.put(TABLE_T_A,address);
