@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
-        android:layout_marginTop="236dp"
+        android:layout_marginTop="184dp"
         android:layout_marginEnd="81dp"
         android:layout_marginBottom="55dp"
         android:fontFamily="sans-serif"
@@ -21,6 +21,7 @@
         android:textSize="42sp"
         app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,19 +29,19 @@
         android:id="@+id/et_username"
         android:layout_width="250dp"
         android:layout_height="36dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="100dp"
+        android:layout_marginTop="284dp"
         android:background="@drawable/edit_bg"
         android:ems="10"
         android:hint="   Username"
         android:inputType="textPersonName"
         android:shadowColor="#C8BFBF"
+        android:textColor="#0B0B0B"
         android:textColorHint="#8D8D8D"
-        app:layout_constraintEnd_toEndOf="@+id/et_password1"
-        app:layout_constraintHorizontal_bias="0.159"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/top" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
 
     <EditText
         android:id="@+id/et_password1"
@@ -48,19 +49,17 @@
         android:layout_height="36dp"
         android:layout_marginStart="100dp"
         android:layout_marginEnd="100dp"
-        android:layout_marginBottom="312dp"
         android:background="@drawable/edit_bg"
         android:ems="10"
         android:hint="   Password"
         android:inputType="textPassword"
-        android:textColor="#F4F2F2"
+        android:textColor="#0B0B0B"
         android:textColorHint="#8D8D8D"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_username"
-        app:layout_constraintVertical_bias="0.962" />
+        app:layout_constraintVertical_bias="0.143" />
 
     <TextView
         android:id="@+id/register"
@@ -69,7 +68,7 @@
         android:layout_marginStart="100dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="80dp"
-        android:layout_marginBottom="240dp"
+        android:layout_marginBottom="208dp"
         android:text="Register"
         android:textColor="#5666BD"
         android:textSize="18sp"
