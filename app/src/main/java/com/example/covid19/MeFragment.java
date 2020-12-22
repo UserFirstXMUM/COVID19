@@ -36,6 +36,7 @@ public class MeFragment extends Fragment {
     RelativeLayout trip_record;
     RelativeLayout qrcode_scanner;
     RelativeLayout personal_information;
+    RelativeLayout log_out;
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -106,6 +107,7 @@ public class MeFragment extends Fragment {
         setOnDailyReportCalendarClicked();
         setOnTripRecordClicked();
         setonQRcodeScannerClicked();
+ //       setOnLogOutClicked();
 
         return view;
     }
@@ -138,5 +140,12 @@ public class MeFragment extends Fragment {
         });
     }
 
+ /*   private void setOnLogOutClicked(){
+        log_out.setOnClickListener(v->{
+            Intent intent =new Intent(getActivity(), RegisterPage.class);
+            startActivity(intent);
+        });
+    }
+*/
 
 }
