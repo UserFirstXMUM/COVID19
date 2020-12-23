@@ -27,15 +27,23 @@ public class InfoFragment extends Fragment {
     private ImageView la2;
     private TextView text1;
     private TextView text3;
+    private TextView t1;
+    private TextView t2;
+    private TextView context1;
+    private TextView context2;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_info, container, false);
 
-        ImageView la1 = root.findViewById(R.id.la1);
-        ImageView la2 = root.findViewById(R.id.la2);
-        TextView text1 = root.findViewById(R.id.text1);
-        TextView text3 = root.findViewById(R.id.text3);
+        la1 = root.findViewById(R.id.la1);
+        la2 = root.findViewById(R.id.la2);
+        text1 = root.findViewById(R.id.text1);
+        text3 = root.findViewById(R.id.text3);
+        t1 = root.findViewById(R.id.t1);
+        t2 = root.findViewById(R.id.t2);
+        context1 = root.findViewById(R.id.context1);
+        context2 = root.findViewById(R.id.context2);
 
         la1.setOnClickListener(v -> {
             if (text1.getVisibility() == View.GONE)
@@ -49,6 +57,20 @@ public class InfoFragment extends Fragment {
                 text3.setVisibility(View.VISIBLE);
             else
                 text3.setVisibility(View.GONE);
+        });
+
+        t1.setOnClickListener(v -> {
+            if (context1.getVisibility() == View.GONE)
+                context1.setVisibility(View.VISIBLE);
+            else
+                context1.setVisibility(View.GONE);
+        });
+
+        t2.setOnClickListener(v -> {
+            if (context2.getVisibility() == View.GONE)
+                context2.setVisibility(View.VISIBLE);
+            else
+                context2.setVisibility(View.GONE);
         });
 
         return root;

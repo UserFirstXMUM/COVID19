@@ -45,8 +45,8 @@ public class EditPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_page);
-        Bundle bundle=this.getIntent().getExtras();
-        user_id = bundle.getInt("user_id",0);
+        Intent intent = getIntent();
+        user_id = Integer.parseInt(intent.getStringExtra("user_id"));
         et_name = findViewById(R.id.et_username);
         et_age = findViewById(R.id.et_age);
         et_email = findViewById(R.id.et_email);
@@ -104,12 +104,6 @@ public class EditPage extends AppCompatActivity {
                 String user_id_s=String.format("%d", user_id);
                 mHelper.Userupdate(info, "_id=" + user_id_s);
                 showToast("Information has been updated to the SQLite database");
-                Intent intent = new Intent(EditPage.this, MainActivity.class);
-                Bundle bundle=new Bundle();
-                bundle.putInt("user_id",user_id);
-                bundle.putInt("user_id_d",user_id);
-                intent.putExtras(bundle);
-                startActivity(intent);
                 //Refresh the page data and reload the data within onResume ()
                 onResume();
             }
@@ -132,6 +126,8 @@ public class EditPage extends AppCompatActivity {
         et_gender.setText(gender);
         et_phone.setText(info1.phone);
         et_password1.setText(info1.password);
+        head.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        head.setImageBitmap(MainApplication.getInstance().userIconMap.get((long)info1.xuhao));
     }
 
     @Override

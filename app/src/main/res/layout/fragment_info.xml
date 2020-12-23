@@ -257,6 +257,30 @@
 
                         </LinearLayout>
 
+                        <TextView
+                            android:id="@+id/context1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="You’re probably really worried about the new COVID-19 coronavirus, especially if there are confirmed cases near you. Fortunately, you can take action to protect yourself and your family from contracting the infection. Simple things like staying home whenever possible, avoiding sick people, washing your hands often, and disinfecting high-touch surfaces can help you stay well. If you suspect you may be sick, call your doctor or your local health department immediately. Then, stay home until they tell you to seek medical care."
+                            android:textColor="#070707"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/context2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="Pets have not been found to spread COVID-19; Chloroquine Phosphate is not a specific treatment but definitely helps recovery; It is vital to keep waste pipes unobstructed; There is no need to disinfect the soles of your shoes; Wipe your phone with antiseptic wipes after going out; Vegetables and meats are unlikely to carry COVID-19; Air purifiers cannot filter viruses; People with a temperature and cough are still forbidden to take public transport; Cold dishes, sushi, stir-fried dishes with eggs should be avoided when ordering foods; Only seated tickets being sold on the railways; Confirmed and suspected patients must not wear masks with respirators; Recovered patients can donate plasma two weeks after recovery."
+                            android:textColor="#070707"
+                            android:visibility="gone" />
+
 
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -325,7 +349,7 @@
                             android:layout_marginRight="10dp"
                             android:layout_marginBottom="10dp"
                             android:text="No, or yes but I checked the temperature every time."
-                            android:textColor="#BBBBBB"
+                            android:textColor="#070707"
                             android:textSize="18sp"
                             android:visibility="gone" />
 
@@ -396,7 +420,7 @@
                             android:layout_marginRight="10dp"
                             android:layout_marginBottom="10dp"
                             android:text="Temperature over 37.2 degrees should be taken seriously."
-                            android:textColor="#BBBBBB"
+                            android:textColor="#070707"
                             android:textSize="18sp"
                             android:visibility="gone" />
                     </LinearLayout>

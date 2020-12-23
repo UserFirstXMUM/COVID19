@@ -1,6 +1,7 @@
 package com.example.covid19;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 
@@ -9,12 +10,15 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 public class MainActivity extends AppCompatActivity {
+
+    private int user_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +35,20 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navView, navController);
         requestPermission();
         Bundle bundle=this.getIntent().getExtras();
+
+        Bundle bundle1=getIntent().getExtras();
+        user_id = bundle1.getInt("user_id",0);
+        MeFragment fragment = new MeFragment();
+        Bundle bundle2 = new Bundle();
+        bundle2.putString("user_id", String.valueOf(user_id));
+        fragment.setArguments(bundle2);
+
     }
+
+    public String getTitles(){
+        return String.valueOf(user_id);
+    }
+
     public void requestPermission() {
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
@@ -40,4 +57,5 @@ public class MainActivity extends AppCompatActivity {
                     Manifest.permission.CAMERA},100);
         }
     }
+
 }

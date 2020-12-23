@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -17,45 +16,45 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <RelativeLayout
-            android:id="@+id/relativeLayout2"
+        <LinearLayout
+            android:id="@+id/ll_channel"
             android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="1dp"
-            android:background="#9CFFFFFF">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/iv_avatar"
+                android:layout_width="100dp"
+                android:layout_height="86dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="150dp"
+                android:layout_marginLeft="250dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="5dp"
+                tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
                 android:id="@+id/tv_username_mine"
-                android:layout_width="wrap_content"
+                android:layout_width="244dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginLeft="12dp"
+                android:layout_marginStart="80dp"
+                android:layout_marginLeft="50dp"
                 android:layout_marginEnd="111dp"
-                android:layout_marginBottom="43dp"
+                android:layout_marginBottom="100dp"
                 android:ellipsize="end"
                 android:fontFamily="sans-serif-condensed-medium"
+                android:gravity="center"
                 android:maxLines="1"
                 android:text='Register/Log in'
                 android:textColor="#333333"
                 android:textSize="28sp"
                 android:textStyle="bold" />
-
-            <ImageView
-                android:id="@+id/iv_avatar"
-                android:layout_width="93dp"
-                android:layout_height="86dp"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
-                android:layout_centerInParent="true"
-                android:layout_marginLeft="250dp"
-                android:layout_marginEnd="153dp"
-                android:layout_marginBottom="84dp"
-                tools:srcCompat="@tools:sample/avatars" />
-
-
-        </RelativeLayout>
+        </LinearLayout>
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -64,7 +63,7 @@
             android:layout_marginBottom="24dp"
             android:scrollbars="none"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/relativeLayout2">
+            app:layout_constraintTop_toBottomOf="@+id/ll_channel">
 
             <LinearLayout
                 android:layout_width="match_parent"

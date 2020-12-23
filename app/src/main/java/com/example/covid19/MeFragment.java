@@ -1,17 +1,20 @@
 package com.example.covid19;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,6 +27,10 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.covid19.bean.UserInfo;
+import com.example.covid19.database.UserDBHelper;
+import com.example.covid19.util.FileUtil;
+import com.example.covid19.util.SharedUtil;
 
 
 import static android.content.Context.MODE_PRIVATE;
@@ -31,12 +38,25 @@ import static android.content.Context.MODE_PRIVATE;
 public class MeFragment extends Fragment {
 
     private static final String TAG = "MeFragment";
+    private UserDBHelper mHelper;
+    private TextView tvUsername;
+    private ImageView avatar;
+    private String user_id;
 
     RelativeLayout daily_report;
     RelativeLayout trip_record;
     RelativeLayout qrcode_scanner;
     RelativeLayout personal_information;
     RelativeLayout log_out;
+
+    public MeFragment() {
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        user_id = ((MainActivity) activity).getTitles();
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -46,13 +66,14 @@ public class MeFragment extends Fragment {
         trip_record = view.findViewById(R.id.rela_trip_record);
         qrcode_scanner=view.findViewById(R.id.rela_qrcode_scanner);
         personal_information = view.findViewById(R.id.rela_personal_information);
-        ImageView avatar = view.findViewById(R.id.iv_avatar);
+        avatar = view.findViewById(R.id.iv_avatar);
 
-        TextView tvUsername = view.findViewById(R.id.tv_username_mine);
+        tvUsername = view.findViewById(R.id.tv_username_mine);
         SharedPreferences settings = getActivity().getSharedPreferences("settings", MODE_PRIVATE);
         String username = settings.getString("username", "");
         Log.d(TAG, username);
 
+        //user_id = Integer.parseInt(getArguments().getString("user_id"));
 
         if (!username.isEmpty()) {
 //            userService.info(username)
@@ -109,13 +130,54 @@ public class MeFragment extends Fragment {
         setonQRcodeScannerClicked();
  //       setOnLogOutClicked();
 
+        //showHead();
+
         return view;
     }
+
+    private String mFirst = "true";
+    public void onResume() {
+        super.onResume();
+        mHelper = UserDBHelper.getInstance(getContext(), 2);
+        mHelper.openReadLink();
+        mHelper.openWriteLink();
+        UserInfo.getDefaultList();
+        UserInfo info = mHelper.UserqueryByUserid(user_id);
+
+        mFirst = SharedUtil.getIntance(getContext()).readShared("mylifefirst", "true");
+        String path = MainApplication.getInstance().getExternalFilesDir(
+                Environment.DIRECTORY_DOWNLOADS).toString() + "/";
+        if (mFirst.equals("true")) {
+            info.rowid = mHelper.insert_user(info);
+            Bitmap thumb = BitmapFactory.decodeResource(getResources(), info.portrait);
+            MainApplication.getInstance().userIconMap.put((long)info.xuhao, thumb);
+            String thumb_path = path + info.username + "_s.jpg";
+            FileUtil.saveImage(thumb_path, thumb);
+            info.head_portrait = thumb_path;
+            mHelper.Userupdate(info);
+            Bitmap thumb1 = BitmapFactory.decodeFile(info.head_portrait);
+            MainApplication.getInstance().userIconMap.put((long) info.xuhao, thumb1);
+            avatar.setScaleType(ImageView.ScaleType.FIT_CENTER);
+            avatar.setImageBitmap(MainApplication.getInstance().userIconMap.get((long)info.xuhao));
+        }
+        else
+        {
+            avatar.setScaleType(ImageView.ScaleType.FIT_CENTER);
+            avatar.setImageBitmap(MainApplication.getInstance().userIconMap.get((long)info.xuhao));
+        }
+        SharedUtil.getIntance(getContext()).writeShared("mylifefirst", "false");
+
+        tvUsername.setText(info.username);
+    }
+
 
     private void setOnPersonalInfomationClicked() {
         personal_information.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), EditPage.class);
-            startActivity(intent);
+            Bundle bundle = new Bundle();
+            bundle.putString("user_id", user_id);
+            intent.putExtras(bundle);
+            getActivity().startActivity(intent);
         });
     }
 
