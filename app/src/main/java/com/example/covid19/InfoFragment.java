@@ -20,7 +20,7 @@ import com.example.covid19.R;
 
 public class InfoFragment extends Fragment {
 
-    private VideoView videoView;
+    private VideoView VideoView;
     private android.net.Uri Uri;
     private MediaController MediaController;
     private ImageView la1;
@@ -72,6 +72,15 @@ public class InfoFragment extends Fragment {
             else
                 context2.setVisibility(View.GONE);
         });
+
+        VideoView videoView = root.findViewById(R.id.videoView);
+        String video_path = "android.resource://" + "com.example.covid19" + "/" + R.raw.jb;
+        Uri uri = Uri.parse(video_path);
+        videoView.setVideoURI(uri);
+
+        MediaController mediaController = new MediaController(getContext());
+        videoView.setMediaController(mediaController);
+        mediaController.setAnchorView(videoView);
 
         return root;
     }
