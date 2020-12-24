@@ -46,6 +46,7 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginEnd="111dp"
                 android:layout_marginBottom="100dp"
+                android:background="#B4FDFDFD"
                 android:ellipsize="end"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:gravity="center"
