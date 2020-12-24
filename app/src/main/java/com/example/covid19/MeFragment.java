@@ -67,6 +67,7 @@ public class MeFragment extends Fragment {
         qrcode_scanner=view.findViewById(R.id.rela_qrcode_scanner);
         personal_information = view.findViewById(R.id.rela_personal_information);
         avatar = view.findViewById(R.id.iv_avatar);
+        log_out=view.findViewById(R.id.rela_logout);
 
         tvUsername = view.findViewById(R.id.tv_username_mine);
         SharedPreferences settings = getActivity().getSharedPreferences("settings", MODE_PRIVATE);
@@ -128,7 +129,7 @@ public class MeFragment extends Fragment {
         setOnDailyReportCalendarClicked();
         setOnTripRecordClicked();
         setonQRcodeScannerClicked();
- //       setOnLogOutClicked();
+        setOnLogOutClicked();
 
         //showHead();
 
@@ -180,5 +181,10 @@ public class MeFragment extends Fragment {
         });
     }
 
-
+    private void setOnLogOutClicked() {
+        log_out.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), LoginPage.class);
+            startActivity(intent);
+        });
+    }
 }
