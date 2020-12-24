@@ -83,16 +83,6 @@ public class UserDBHelper extends SQLiteOpenHelper {
                 + ");";
         Log.d(TAG, "create_sql:" + create_sql);
         db.execSQL(create_sql);
-        String create_sql2 = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " ("
-                + "_id INTEGER PRIMARY KEY  AUTOINCREMENT NOT NULL,"
-                + "username VARCHAR NOT NULL," + "age INTEGER NOT NULL,"
-                + "email VARCHAR NOT NULL," + "manager INTEGER NOT NULL," + "gender INTEGER NOT NULL," + "birthday VARCHAR," + "register_time VARCHAR NOT NULL"
-                //演示数据库升级时要先把下面这行注释
-                + ",phone VARCHAR NOT NULL" + ",password VARCHAR NOT NULL" + ",head_portrait VARCHAR" + ",portrait INTEGER"
-                + ");";
-        Log.d(TAG, "create_sql:" + create_sql);
-        db.execSQL(create_sql);
-        db.execSQL("create table " + TABLE_TRAVEL + "(ID INTEGER PRIMARY KEY AUTOINCREMENT,NAME VARCHAR,ADDRESS TEXT,DATE TEXT)");
     }
 
 

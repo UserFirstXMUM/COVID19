@@ -127,7 +127,7 @@ public class EditPage extends AppCompatActivity {
         et_phone.setText(info1.phone);
         et_password1.setText(info1.password);
         head.setScaleType(ImageView.ScaleType.FIT_CENTER);
-        head.setImageBitmap(MainApplication.getInstance().userIconMap.get((long)info1.xuhao));
+        head.setImageResource(R.drawable.moren);
     }
 
     @Override

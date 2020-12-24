@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.covid19.bean.UserInfo;
@@ -35,7 +36,7 @@ public class LoginPage extends AppCompatActivity {
         UserName = findViewById(R.id.et_username);
         Password = findViewById(R.id.et_password1);
         Login = findViewById(R.id.loginbtn);
-        Register = findViewById(R.id.register);
+        Register = findViewById((R.id.register));
         Info = findViewById(R.id.info);
         Info.setText("No of attempts remaining: 5");
         Counter = 5;
@@ -66,7 +67,6 @@ public class LoginPage extends AppCompatActivity {
                         Login.setEnabled(false);
                     }
                 }
-
             }
         });
 
@@ -78,7 +78,6 @@ public class LoginPage extends AppCompatActivity {
             }
         });
     }
-
     @Override
     protected void onStart() {
         super.onStart();

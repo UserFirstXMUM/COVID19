@@ -143,30 +143,8 @@ public class MeFragment extends Fragment {
         mHelper.openWriteLink();
         UserInfo.getDefaultList();
         UserInfo info = mHelper.UserqueryByUserid(user_id);
-
-        mFirst = SharedUtil.getIntance(getContext()).readShared("mylifefirst", "true");
-        String path = MainApplication.getInstance().getExternalFilesDir(
-                Environment.DIRECTORY_DOWNLOADS).toString() + "/";
-        if (mFirst.equals("true")) {
-            info.rowid = mHelper.insert_user(info);
-            Bitmap thumb = BitmapFactory.decodeResource(getResources(), info.portrait);
-            MainApplication.getInstance().userIconMap.put((long)info.xuhao, thumb);
-            String thumb_path = path + info.username + "_s.jpg";
-            FileUtil.saveImage(thumb_path, thumb);
-            info.head_portrait = thumb_path;
-            mHelper.Userupdate(info);
-            Bitmap thumb1 = BitmapFactory.decodeFile(info.head_portrait);
-            MainApplication.getInstance().userIconMap.put((long) info.xuhao, thumb1);
-            avatar.setScaleType(ImageView.ScaleType.FIT_CENTER);
-            avatar.setImageBitmap(MainApplication.getInstance().userIconMap.get((long)info.xuhao));
-        }
-        else
-        {
-            avatar.setScaleType(ImageView.ScaleType.FIT_CENTER);
-            avatar.setImageBitmap(MainApplication.getInstance().userIconMap.get((long)info.xuhao));
-        }
-        SharedUtil.getIntance(getContext()).writeShared("mylifefirst", "false");
-
+        avatar.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        avatar.setImageResource(R.drawable.moren);
         tvUsername.setText(info.username);
     }
 
