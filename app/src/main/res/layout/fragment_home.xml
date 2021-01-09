@@ -261,6 +261,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/confirm_all"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
@@ -306,6 +307,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/recover_all"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
@@ -324,7 +326,7 @@
                     android:layout_marginRight="20dp"
                     android:layout_marginBottom="20dp"
                     android:fontFamily="sans-serif-medium"
-                    android:text="Confirmed"
+                    android:text="Recovered"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:textColor="#4f4f4f"
                     android:textSize="15sp" />
@@ -351,6 +353,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/death_all"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
@@ -433,6 +436,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/c_confirm"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -477,6 +481,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/c_recoverd"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -495,7 +500,7 @@
                         android:layout_marginRight="20dp"
                         android:layout_marginBottom="20dp"
                         android:fontFamily="sans-serif-medium"
-                        android:text="Confirmed"
+                        android:text="Recoverd"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                         android:textColor="#4f4f4f"
                         android:textSize="15sp" />
@@ -521,6 +526,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/c_death"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
