@@ -161,9 +161,9 @@ public class DayManager {
      */
     public static List<Day> createDayByCalendar(Calendar calendar, int width, int heigh, boolean drawOtherDay) {
         //初始化休息的天数
-        initRestDays(calendar);
+        //initRestDays(calendar);
         //模拟数据
-        imitateData();
+        //imitateData();
 
         List<Day> days = new ArrayList<>();
 
@@ -245,7 +245,7 @@ public class DayManager {
             } else if (outDays.contains(i + 1)) {
                 day.workState = 3;
             } else {
-                day.workState = 1;
+                day.workState = 0;
             }
             days.add(day);
         }
@@ -275,11 +275,11 @@ public class DayManager {
      * 模拟数据
      */
     private static void imitateData() {
-        abnormalDays.add(2);
-        abnormalDays.add(11);
-        abnormalDays.add(16);
-        abnormalDays.add(17);
-        abnormalDays.add(23);
+        //abnormalDays.add(2);
+        //abnormalDays.add(11);
+        //abnormalDays.add(16);
+        //abnormalDays.add(17);
+        //abnormalDays.add(23);
 
         //outDays.add(8);
         //outDays.add(9);
@@ -294,15 +294,15 @@ public class DayManager {
      * @param calendar
      */
             private static void initRestDays(Calendar calendar) {
-                int total = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
-                for (int i = 0; i < total; i++) {
-                    if (i>current)
-                        restDays.add(i);
+                //int total = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+                //for (int i = 0; i < total; i++) {
+                    //if (i>current)
+                        //restDays.add(i);
                     // calendar.set(Calendar.DAY_OF_MONTH, i + 1);
                     //if (calendar.get(Calendar.DAY_OF_WEEK) == 1 || calendar.get(Calendar.DAY_OF_WEEK) == 7) {
                     //restDays.add(i + 1);
         //}
-        }
+        //}
     }
 
 }

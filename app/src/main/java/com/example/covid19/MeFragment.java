@@ -50,8 +50,6 @@ public class MeFragment extends Fragment {
     RelativeLayout personal_information;
     RelativeLayout log_out;
 
-    public MeFragment() {
-    }
 
     @Override
     public void onAttach(Activity activity) {
@@ -164,6 +162,9 @@ public class MeFragment extends Fragment {
     private void setOnDailyReportCalendarClicked() {
         daily_report.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), Date.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("user_id", user_id);
+            intent.putExtras(bundle);
             startActivity(intent);
         });
     }
@@ -171,6 +172,9 @@ public class MeFragment extends Fragment {
     private void setOnTripRecordClicked() {
         trip_record.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), Travel.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("user_id", user_id);
+            intent.putExtras(bundle);
             startActivity(intent);
         });
     }
@@ -178,6 +182,9 @@ public class MeFragment extends Fragment {
     private void setonQRcodeScannerClicked() {
         qrcode_scanner.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), QRcode.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("user_id", user_id);
+            intent.putExtras(bundle);
             startActivity(intent);
         });
     }

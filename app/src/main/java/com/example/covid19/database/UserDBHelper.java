@@ -22,9 +22,14 @@ public class UserDBHelper extends SQLiteOpenHelper {
     private SQLiteDatabase mDB = null; // 数据库的实例
     public static final String TABLE_NAME = "user_info"; // 表的名称
     public static final String TABLE_TRAVEL="Travel";
+    public static final String TABLE_T_I="user_id";
     public static final String TABLE_T_N="name";
     public static final String TABLE_T_A="address";
     public static final String TABLE_T_D="date";
+    public static final String TABLE_REPORT="Report";
+    public static final String TABLE_R_I="user_id";
+    public static final String TABLE_R_STATUE="statue";
+    public static final String TABLE_R_Date="date";
 
     public UserDBHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -93,7 +98,8 @@ public class UserDBHelper extends SQLiteOpenHelper {
                 + ");";
         Log.d(TAG, "create_sql:" + create_sql2);
         db.execSQL(create_sql2);
-        db.execSQL("create table " + TABLE_TRAVEL + "(ID INTEGER PRIMARY KEY AUTOINCREMENT,NAME VARCHAR,ADDRESS TEXT,DATE TEXT)");
+        db.execSQL("create table " + TABLE_TRAVEL + "(ID INTEGER PRIMARY KEY AUTOINCREMENT,USER_ID VARCHAR, NAME VARCHAR,ADDRESS TEXT,DATE TEXT)");
+        db.execSQL("create table " + TABLE_REPORT + "(ID INTEGER PRIMARY KEY AUTOINCREMENT,USER_ID VARCHAR, STATUE INTEGER,DATE TEXT)");
     }
 
 
@@ -111,17 +117,42 @@ public class UserDBHelper extends SQLiteOpenHelper {
         }
     }
 
-    public Cursor getTravelRecord()
+    public Cursor getTravelRecord(String user)
     {
         SQLiteDatabase db = this.openReadLink();
-        Cursor res = db.rawQuery("SELECT * From " + TABLE_TRAVEL, null);
+        Cursor res = db.rawQuery("SELECT * From " + TABLE_TRAVEL+" WHERE "+TABLE_T_I+"='"+user+"'", null);
         return res;
     }
-    public void addTravel(String name,String address,String date)
+    public Cursor getReport(String user)
+    {
+        SQLiteDatabase db = this.openReadLink();
+        Cursor res = db.rawQuery("SELECT * From " + TABLE_REPORT+" WHERE "+TABLE_R_I+"='"+user+"'", null);
+        return res;
+    }
+    public boolean ReportDone(String user,String date)
+    {
+        SQLiteDatabase db = this.openReadLink();
+        Cursor res = db.rawQuery("SELECT * From " + TABLE_REPORT+" WHERE "+TABLE_R_I+"='"+user+"' AND "+TABLE_R_Date+"='"+date+"'", null);
+        res.moveToFirst();
+        if (res.getCount()>0)
+            return true;
+        else
+            return false;
+    }
+    public void addReport(String user,String date,int statue)
     {
         SQLiteDatabase db = this.openWriteLink();
-        Cursor res = db.rawQuery("SELECT * From " + TABLE_TRAVEL, null);
         ContentValues cv= new ContentValues();
+        cv.put(TABLE_R_I,user);
+        cv.put(TABLE_R_STATUE,statue);
+        cv.put(TABLE_R_Date,date);
+        db.insert(TABLE_REPORT,null,cv);
+    }
+    public void addTravel(String user,String name,String address,String date)
+    {
+        SQLiteDatabase db = this.openWriteLink();
+        ContentValues cv= new ContentValues();
+        cv.put(TABLE_T_I,user);
         cv.put(TABLE_T_A,address);
         cv.put(TABLE_T_N,name);
         cv.put(TABLE_T_D,date);

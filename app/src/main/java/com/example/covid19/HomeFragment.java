@@ -1,20 +1,27 @@
 package com.example.covid19;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.ConsoleMessage;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -22,13 +29,18 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.covid19.database.UserDBHelper;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.card.MaterialCardView;
+import com.hbb20.CountryCodePicker;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Objects;
 
 public class HomeFragment extends Fragment {
@@ -45,12 +57,23 @@ public class HomeFragment extends Fragment {
     TextView confirm_c;
     TextView death_c;
     TextView recoverd_c;
-
+    String user_id;
+    RadioButton radio;
+    com.hbb20.CountryCodePicker ccp;
+    UserDBHelper db;
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        user_id = ((MainActivity) activity).getTitles();
+    }
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        BottomSheetDialog bottomSheet = new BottomSheetDialog(getContext());
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-
+        BottomSheetDialogFragment bottomSheet = new myBottomSheetDialog();
+        Bundle bundle = new Bundle();
+        bundle.putString("user_id", user_id);
+        bottomSheet.setArguments(bundle);
+        radio=root.findViewById(R.id.radioButton);
         webView=root.findViewById(R.id.webView);
         confirm_all=root.findViewById(R.id.confirm_all);
         death_all=root.findViewById(R.id.death_all);
@@ -59,6 +82,8 @@ public class HomeFragment extends Fragment {
         death_c=root.findViewById(R.id.c_death);
         recoverd_c=root.findViewById(R.id.c_recoverd);
         Assessment_button=root.findViewById(R.id.assessment_button);
+        report_but= root.findViewById(R.id.daily_report);
+        ccp=root.findViewById(R.id.ccp);
         Assessment_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,12 +91,12 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
-        report_but= root.findViewById(R.id.daily_report);
+        db=new UserDBHelper(getContext());
+        radio.setClickable(false);
         report_but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                bottomSheet.setContentView(R.layout.bottom_sheet);
-                bottomSheet.show();
+                bottomSheet.show(getFragmentManager(), "DialogFragment");
             }
         });
         info_button=root.findViewById(R.id.info_but);
@@ -102,7 +127,13 @@ public class HomeFragment extends Fragment {
         });
         initWebView(webView);
         getData();
-        getCountryData("Malaysia");
+        getCountryData(ccp.getSelectedCountryName());
+        ccp.setOnCountryChangeListener(new CountryCodePicker.OnCountryChangeListener() {
+            @Override
+            public void onCountrySelected() {
+                getCountryData(ccp.getSelectedCountryName());
+            }
+        });
         return root;
     }
     @SuppressLint("SetJavaScriptEnabled")
@@ -129,9 +160,9 @@ public class HomeFragment extends Fragment {
             public void onResponse(String response) {
                 try {
                     JSONObject jsonObject = new JSONObject(response.toString());
-                    confirm_all.setText(jsonObject.getString("cases"));
-                    death_all.setText(jsonObject.getString("deaths"));
-                    recoverd_all.setText(jsonObject.getString("recovered"));
+                    confirm_all.setText(bigNumber(jsonObject.getInt("cases")));
+                    death_all.setText(bigNumber(jsonObject.getInt("deaths")));
+                    recoverd_all.setText(bigNumber(jsonObject.getInt("recovered")));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -157,7 +188,8 @@ public class HomeFragment extends Fragment {
                     JSONArray jsonArray = new JSONArray(response);
                     for (int i=0;i<jsonArray.length();i++)
                     {
-                        if (Objects.equals(country, jsonArray.getJSONObject(i).getString("country")));
+                        String temp=jsonArray.getJSONObject(i).getString("country");
+                        if (country.equals(temp))
                         {
                             data=jsonArray.getJSONObject(i);
                         }
@@ -169,9 +201,9 @@ public class HomeFragment extends Fragment {
                     }
                     else
                     {
-                        confirm_c.setText(data.getString("/"));
-                        death_c.setText(data.getString("/"));
-                        recoverd_c.setText(data.getString("/"));
+                        confirm_c.setText("/");
+                        death_c.setText("/");
+                        recoverd_c.setText("/");
                     }
 
                 } catch (JSONException e) {
@@ -186,4 +218,57 @@ public class HomeFragment extends Fragment {
         });
         queue.add(stringRequest);
     }
+    private String bigNumber (int number)
+    {
+        String result;
+        if (number>1000000)
+        {
+            result=Integer.toString(number/1000000)+"."+Integer.toString((number-(number/1000000)*1000000)/100000)+"M";
+        }
+        else
+        {
+            result=Integer.toString(number);
+        }
+        return result;
+    }
+    public void checkReport()
+    {
+        Calendar calendar = Calendar.getInstance();
+//获取系统的日期
+//年
+        int year = calendar.get(Calendar.YEAR);
+//月
+        int month = calendar.get(Calendar.MONTH)+1;
+//日
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        String date=year+"/"+month+"/"+day;
+        if (!db.ReportDone(user_id,date))
+        {
+            radio.setChecked(false);
+        }
+        else
+        {
+            radio.setChecked(true);
+            report_but.setVisibility(View.GONE);
+        }
+
+    }
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        LocalBroadcastManager broadcastManager = LocalBroadcastManager.getInstance(getContext());
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction("com.example.covid19.fresh_BROADCAST");
+        BroadcastReceiver mItemViewListClickReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent){
+                String msg = intent.getStringExtra("data");
+                if("refresh".equals(msg)){
+                    checkReport();
+                }
+            }
+        };
+        broadcastManager.registerReceiver(mItemViewListClickReceiver, intentFilter);
+    }
+
 }

@@ -65,49 +65,37 @@
         android:id="@+id/register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="80dp"
-        android:layout_marginBottom="208dp"
+        android:layout_marginTop="24dp"
         android:text="Register"
         android:textColor="#5666BD"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintEnd_toEndOf="@+id/et_password1"
+        app:layout_constraintTop_toBottomOf="@+id/et_password1" />
 
     <TextView
         android:id="@+id/loginbtn"
         android:layout_width="94dp"
         android:layout_height="33dp"
-        android:layout_marginStart="158dp"
-        android:layout_marginTop="105dp"
-        android:layout_marginEnd="159dp"
-        android:layout_marginBottom="159dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/button_bg"
         android:text="Login"
         android:textAlignment="center"
         android:textColor="#5666BD"
         android:textSize="21sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/et_password1"
+        app:layout_constraintTop_toBottomOf="@+id/et_password1" />
 
     <TextView
         android:id="@+id/info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
-        android:layout_marginTop="34dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="80dp"
-        android:layout_marginBottom="98dp"
         android:text="No of attempts remaining: 5"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginbtn" />
 

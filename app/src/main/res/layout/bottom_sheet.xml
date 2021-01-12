@@ -40,14 +40,15 @@ app:cardElevation="3dp">
         android:textColor="#1a7CB4"
         android:textSize="16sp" />
     <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/temperature"
+        android:inputType="numberDecimal"
         android:layout_marginBottom="20dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="14sp"
-        android:textColor="#99000000"
-        android:text="Enter your temperature here">
+        android:textColor="#99000000">
     </com.google.android.material.textfield.TextInputEditText>
     <TextView
         android:layout_width="fill_parent"
@@ -111,6 +112,7 @@ app:cardElevation="3dp">
 
     </RadioGroup>
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/report_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"

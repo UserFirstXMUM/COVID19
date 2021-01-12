@@ -21,8 +21,10 @@ public class TravelAda extends RecyclerView.Adapter {
     UserDBHelper db;
     ArrayList<TravelRecord> arr_record=new ArrayList<>();
     int count;
-    public TravelAda(Context context)
+    String user_id;
+    public TravelAda(Context context,String user_id)
     {
+        this.user_id=user_id;
         db=new UserDBHelper(context);
     }
     @NonNull
@@ -32,7 +34,6 @@ public class TravelAda extends RecyclerView.Adapter {
 
         return new ListViewHolder(view);
     }
-
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         ((ListViewHolder) holder).bindView(position);
@@ -40,7 +41,7 @@ public class TravelAda extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        Cursor result=db.getTravelRecord();
+        Cursor result=db.getTravelRecord(user_id);
         result.moveToFirst();
         count=result.getCount();
         return count;
@@ -61,7 +62,7 @@ public class TravelAda extends RecyclerView.Adapter {
             num=itemView.findViewById(R.id.trave_no);
             detail_but=itemView.findViewById(R.id.detail_btn);
             Detail=itemView.findViewById(R.id.detail_tra);
-            Cursor result=db.getTravelRecord();
+            Cursor result=db.getTravelRecord(user_id);
             db=new UserDBHelper(itemView.getContext());
             result.moveToFirst();
             for (int i=0;i<count;i++)

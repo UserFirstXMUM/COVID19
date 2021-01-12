@@ -1,12 +1,17 @@
 package com.example.covid19;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.example.covid19.database.UserDBHelper;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -35,7 +40,12 @@ public class CalendarView extends View {
      */
     private boolean drawOtherDays = true;
 
+    String user_id;
+
     private OnDrawDays onDrawDays;
+
+    private ArrayList<Integer> normal_day= new ArrayList<Integer>();
+    private ArrayList<Integer> abnormal_day= new ArrayList<Integer>();
 
     /**
      * 改变日期，并更改当前状态，由于绘图是在calendar基础上进行绘制的，所以改变calendar就可以改变图片
@@ -52,10 +62,11 @@ public class CalendarView extends View {
         invalidate();
     }
 
-    public CalendarView(Context context) {
+    public CalendarView(Context context,String user_id) {
         super(context);
         this.context = context;
         //初始化控件
+        this.user_id=user_id;
         initView();
     }
 
@@ -84,10 +95,39 @@ public class CalendarView extends View {
         com.example.covid19.DayManager.setCurrent(calendar.get((Calendar.DAY_OF_MONTH)));
         com.example.covid19.DayManager.setTempcurrent(calendar.get(Calendar.DAY_OF_MONTH
         ));
+        get_days();
+        for (int i=0;i<normal_day.size();i++)
+        {
+            com.example.covid19.DayManager.addOutDays(normal_day.get(i));
+        }
+        for (int i=0;i<abnormal_day.size();i++)
+        {
+            com.example.covid19.DayManager.addAbnormalDays(abnormal_day.get(i));
+        }
         com.example.covid19.DayManager.setCurrentTime(calendar.get(Calendar.MONTH) + "" + calendar.get(Calendar.YEAR));
     }
+    private void get_days()
+    {
+        UserDBHelper db =new UserDBHelper(getContext());
+        Cursor result=db.getReport(user_id);
+        result.moveToFirst();
+        for (int i=0;i<result.getCount();i++)
+        {
+            String date=result.getString(result.getColumnIndex("DATE"));
+            int statue=result.getInt(result.getColumnIndex("STATUE"));
+            int day=Integer.valueOf(date.substring(date.lastIndexOf("/")+1));
+            if (statue==0)
+            {
+                abnormal_day.add(day);
+            }
+            else
+            {
+                normal_day.add(day);
+            }
+            result.moveToNext();
+        }
 
-
+    }
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);

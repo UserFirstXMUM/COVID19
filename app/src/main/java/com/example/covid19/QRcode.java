@@ -33,6 +33,7 @@ public class QRcode extends AppCompatActivity {
     private GpCodeScanner mCodeScanner;
     private TextView txtScanText;
     UserDBHelper db;
+    String user_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +42,8 @@ public class QRcode extends AppCompatActivity {
         txtScanText = findViewById(R.id.text);
         db=new UserDBHelper(getApplicationContext());
 
+        Intent intent = getIntent();
+        user_id = intent.getStringExtra("user_id");
         mCodeScanner = new GpCodeScanner(this, scannerView);
 
         mCodeScanner.setDecodeCallback(new DecodeCallback() {
@@ -76,7 +79,7 @@ public class QRcode extends AppCompatActivity {
                             address=content.substring(content.indexOf("Add:")+4,content.indexOf("}"));
                             if (content.contains("Name:") && content.lastIndexOf("}")!=-1)
                             name=content.substring(content.indexOf("Name:")+5,content.lastIndexOf("}"));
-                            db.addTravel(name,address,year+"/"+month+"/"+day+"/ "+hour+":"+minute+":"+second);
+                            db.addTravel(user_id,name,address,year+"/"+month+"/"+day+"/ "+hour+":"+minute+":"+second);
                         }
                         else
                         {
