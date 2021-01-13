@@ -121,13 +121,14 @@ public class HomeFragment extends Fragment {
         code_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(), Travel.class);
+                Intent intent = new Intent(getContext(), QRcode.class);
                 startActivity(intent);
             }
         });
         initWebView(webView);
         getData();
         getCountryData(ccp.getSelectedCountryName());
+        checkReport();
         ccp.setOnCountryChangeListener(new CountryCodePicker.OnCountryChangeListener() {
             @Override
             public void onCountrySelected() {
