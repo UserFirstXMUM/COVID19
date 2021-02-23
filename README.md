@@ -82,6 +82,6 @@ There is a popup window that requires a report of the user’s health condition.
 ![image](https://github.com/UserFirstXMUM/COVID19/blob/main/UI%20Navigation%20Flow.png)
 
 ## Contributors
-@ Nacrow
-@ Tangdd-abc
-@ RenFei-github
+[Nacrow](https://github.com/Nacrow)
+[Tangdd-abc](https://github.com/Tangdd-abc)
+[RenFei-github](https://github.com/RenFei-github)
